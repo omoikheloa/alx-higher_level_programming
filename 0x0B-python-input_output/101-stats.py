@@ -2,7 +2,7 @@
 import sys
 
 
-idef print_info():
+def print_info():
     """ Function to print file size and status codes"""
     print('File size: {:d}'.format(file_size))
 
