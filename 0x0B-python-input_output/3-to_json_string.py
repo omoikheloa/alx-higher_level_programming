@@ -6,14 +6,13 @@ import json
 
 
 def to_json_string(my_obj):
-    """
-    Function that returns the JSON representation of an object
+    """ Function that returns the JSON representation of an object
 
     Args:
         my_obj: object
 
     Raises:
-        exception: when the oject can't be encoded
+        Exception: when the oject can't be encoded
 
     """
     return json.dumps(my_obj)
