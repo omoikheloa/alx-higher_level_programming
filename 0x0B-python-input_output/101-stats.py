@@ -1,9 +1,20 @@
 #!/usr/bin/python3
-import sys
+"""Reads from standard input and computes metrics.
+
+After every ten lines or the input of a keyboard interruption (CTRL + C),
+prints the following statistics:
+    - Total file size up to that point.
+    - Count of read status codes up to that point.
+"""
 
 
 def print_info():
-    """ Function to print file size and status codes"""
+    """Print file size and status codes.
+
+    Args:
+        file_size (int): Accumulated file size.
+        status_codes (dict): Accumulated status codes count.
+    """
     print('File size: {:d}'.format(file_size))
 
     for scode, code_times in sorted(status_codes.items()):
