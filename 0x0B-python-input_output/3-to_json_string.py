@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module contains a function that returns the 
+""" Module contains a function that returns the
 JSON representation of an object
 """
 import json
