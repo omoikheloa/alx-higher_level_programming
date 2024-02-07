@@ -8,57 +8,51 @@ prints the following statistics:
 """
 
 
-def print_info():
+def print_info(file_size, status_codes):
     """Print file size and status codes.
 
     Args:
         file_size (int): Accumulated file size.
         status_codes (dict): Accumulated status codes count.
     """
-    print('File size: {:d}'.format(file_size))
+    print("File size: {:d}".format(file_size))
 
-    for scode, code_times in sorted(status_codes.items()):
-        if code_times > 0:
-            print('{}: {:d}'.format(scode, code_times))
+    for code, count in sorted(status_codes.items()):
+        if count > 0:
+            print("{}: {:d}".format(code, count))
 
 
-status_codes = {
-    '200': 0,
-    '301': 0,
-    '400': 0,
-    '401': 0,
-    '403': 0,
-    '404': 0,
-    '405': 0,
-    '500': 0
-}
+if __name__ == "__main__":
+    import sys
 
-lc = 0
-file_size = 0
+    file_size = 0
+    status_codes = {
+        '200': 0, '301': 0, '400': 0, '401': 0,
+        '403': 0, '404': 0, '405': 0, '500': 0
+    }
+    line_count = 0
 
-try:
-    for line in sys.stdin:
-        if lc != 0 and lc % 10 == 0:
-            print_info()
+    try:
+        for line in sys.stdin:
+            line_count += 1
 
-        pieces = line.split()
+            try:
+                file_size += int(line.split()[-1])
+            except (ValueError, IndexError):
+                pass
 
-        try:
-            status = int(pieces[-2])
+            try:
+                status_code = line.split()[-2]
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+            except IndexError:
+                pass
 
-            if str(status) in status_codes.keys():
-                status_codes[str(status)] += 1
-        except:
-            pass
+            if line_count % 10 == 0:
+                print_info(file_size, status_codes)
 
-        try:
-            file_size += int(pieces[-1])
-        except:
-            pass
+        print_info(file_size, status_codes)
 
-        lc += 1
-
-    print_info()
-except KeyboardInterrupt:
-    print_info()
-    raise
+    except KeyboardInterrupt:
+        print_info(file_size, status_codes)
+        raise
