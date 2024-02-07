@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-
 import sys
 
 
-def print_info():
+idef print_info():
+    """ Function to print file size and status codes"""
     print('File size: {:d}'.format(file_size))
 
     for scode, code_times in sorted(status_codes.items()):
