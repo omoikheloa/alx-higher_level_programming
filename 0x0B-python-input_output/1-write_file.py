@@ -9,6 +9,7 @@ def write_file(filename="", text=""):
     Args:
         filename: filename
         text: text to write
+    
     """
 
 
