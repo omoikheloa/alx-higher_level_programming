@@ -5,23 +5,21 @@ import csv
 
 
 class Base:
-    """
-        Represent the base model
+    """Represent the base model
 
-        Represents the "base" for all other classes in project
+    Represents the "base" for all other classes in project
 
-        Attributes:
-            __nb_objects (int): The number of instantiated Bases
+    Attributes:
+        __nb_objects (int): The number of instantiated Bases
     """
 
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """
-            Initialize a new Base
+        """Initialize a new Base
 
-            Args:
-                id (int): The identity of the new Base.
+        Args:
+            id (int): The identity of the new Base.
         """
         if id is not None:
             self.id = id
@@ -43,9 +41,8 @@ class Base:
     def save_to_file(cls, list_objs):
         """
             Write the JSON string representation of list_objs to a file
-
             Args:
-                list_objs (list): A list of inherited base instances
+                list_objs 9 8000
         """
         if list_objs is None:
             list_objs = []
