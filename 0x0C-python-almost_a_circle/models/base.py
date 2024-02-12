@@ -39,16 +39,17 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """Write the JSON string representation of list_objs to a file
+        Args:
+            list_objs (list): list of inherited base instances
         """
-            Write the JSON string representation of list_objs to a file
-            Args:
-                list_objs 9 8000
-        """
-        if list_objs is None:
-            list_objs = []
         filename = cls.__name__ + ".json"
-        with open(filename, 'w') as file:
-            file.write(cls.to_json_string([obj.to_dictionary() for obj in list_objs]))
+        with open(filename, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_string):
@@ -62,11 +63,10 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """
-            Return a class instantied from a dictionary of attributes
+        """Return a class instantied from a dictionary of attributes
 
-            Args:
-                **dictionary (dict): Key/value pairs of attributes to initialize
+        Args:
+            **dictionary (dict): Key/value pairs of attributes to initialize
         """
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
