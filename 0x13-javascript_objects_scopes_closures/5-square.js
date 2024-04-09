@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-//Creates a Square class that extends Rectangle class
+// Creates a Square class that extends Rectangle class
 
 const Rectangle = require('./4-rectangle');
 

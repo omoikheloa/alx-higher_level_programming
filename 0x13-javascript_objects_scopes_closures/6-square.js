@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-//Prints function with custom characters to represent the Square
+// Prints function with custom characters to represent the Square
 
 const OldSquare = require('./5-square');
 
