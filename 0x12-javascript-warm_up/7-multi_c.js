@@ -5,7 +5,7 @@ if (isNaN(printXt) || process.argv[2] === undefined) {
   console.log('Missing number of occurences');
 } else {
   while (printXt > 0) {
-    console.long('C is fun');
+    console.log('C is fun');
     printXt--;
   }
 }
